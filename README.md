@@ -36,6 +36,7 @@
 use sport_homework;
 show tables;
 
+
 # 用户表
 
 create table user
@@ -60,60 +61,75 @@ create table userpassword
     foreign key (user_id) references user (user_id)
 );
 
-# 发起者表
-create table initiator
+create table joiner
 (
-    initiator_id int not null,
-    post_id      int not null,
-    bat_offer    int check (ball_offer >= 0) comment '可提供拍的数量',
-    ball_offer   int check (ball_offer >= 0) comment '可提供球的数量',
-    position     varchar(50),
-    foreign key (initiator_id) references user (user_id),
-    foreign key (post_id) references post (post_id),
-    primary key (initiator_id, post_id)
+    state      int comment '1:participant,2:applicant,3:initiator,4:readyparticipant',
+    joiner_id  int not null,
+    post_id    int not null,
+    begin_time datetime comment '只有readyparticipant才有',
+    end_time   datetime comment '只有readyparticipant才有',
+    bat_offer  int check (bat_offer >= 0) comment '可提供拍的数量',
+    ball_offer int check (ball_offer >= 0) comment '可提供球的数量',
+    position   varchar(50),
+    primary key (joiner_id, post_id),
+    foreign key (joiner_id) references user (user_id),
+    foreign key (post_id) references post (post_id)
 );
 
-# 申请者表
-create table applicant
-(
-    applicant_id int not null,
-    post_id      int not null,
-    bat_offer    int check (bat_offer >= 0) comment '可提供拍的数量',
-    ball_offer   int check (ball_offer >= 0) comment '可提供球的数量',
-    position     varchar(50),
-    foreign key (applicant_id) references user (user_id),
-    foreign key (post_id) references post (post_id),
-    primary key (applicant_id, post_id)
-);
+# # 发起者表
+# create table initiator
+# (
+#     initiator_id int not null,
+#     post_id      int not null,
+#     bat_offer    int check (bat_offer >= 0) comment '可提供拍的数量',
+#     ball_offer   int check (ball_offer >= 0) comment '可提供球的数量',
+#     position     varchar(50),
+#     primary key (initiator_id, post_id),
+#     foreign key (initiator_id) references user (user_id),
+#     foreign key (post_id) references post (post_id)
+# );
 
-# 参与者表
-create table participant
-(
-    participant_id int not null,
-    post_id        int not null,
-    bat_offer      int check (bat_offer >= 0) comment '可提供拍的数量',
-    ball_offer     int check (ball_offer >= 0) comment '可提供球的数量',
-    position       varchar(50),
-    foreign key (participant_id) references user (user_id),
-    foreign key (post_id) references post (post_id),
-    primary key (participant_id, post_id)
-);
+# # 申请者表
+# create table applicant
+# (
+#     applicant_id int not null,
+#     post_id      int not null,
+#     bat_offer    int check (bat_offer >= 0) comment '可提供拍的数量',
+#     ball_offer   int check (ball_offer >= 0) comment '可提供球的数量',
+#     position     varchar(50),
+#     foreign key (applicant_id) references user (user_id),
+#     foreign key (post_id) references post (post_id),
+#     primary key (applicant_id, post_id)
+# );
 
-# 待参与者表
-create table readyparticipant
-(
-    readyparticipant_id int      not null,
-    post_id             int      not null,
-    bat_offer           int check (bat_offer >= 0) comment '可提供拍的数量',
-    ball_offer          int check (ball_offer >= 0) comment '可提供球的数量',
-    position            varchar(50),
-    teammate_exist      bool default false,
-    begin_time          datetime not null,#待修改!!!
-    end_time            datetime not null,#待修改!!!
-    foreign key (readyparticipant_id) references user (user_id),
-    foreign key (post_id) references post (post_id),
-    primary key (readyparticipant_id, post_id)
-);
+# # 参与者表
+# create table participant
+# (
+#     participant_id int not null,
+#     post_id        int not null,
+#     bat_offer      int check (bat_offer >= 0) comment '可提供拍的数量',
+#     ball_offer     int check (ball_offer >= 0) comment '可提供球的数量',
+#     position       varchar(50),
+#     foreign key (participant_id) references user (user_id),
+#     foreign key (post_id) references post (post_id),
+#     primary key (participant_id, post_id)
+# );
+
+# # 待参与者表
+# create table readyparticipant
+# (
+#     readyparticipant_id int      not null,
+#     post_id             int      not null,
+#     bat_offer           int check (bat_offer >= 0) comment '可提供拍的数量',
+#     ball_offer          int check (ball_offer >= 0) comment '可提供球的数量',
+#     position            varchar(50),
+#     teammate_exist      bool default false,
+#     begin_time          datetime not null,#待修改!!!
+#     end_time            datetime not null,#待修改!!!
+#     foreign key (readyparticipant_id) references user (user_id),
+#     foreign key (post_id) references post (post_id),
+#     primary key (readyparticipant_id, post_id)
+# );
 
 # 意向好友表
 create table teammate
@@ -126,17 +142,17 @@ create table teammate
     foreign key (teammate_id) references user (user_id),
     primary key (readyparticipant_id, post_id, teammate_id)
 );
-
+# ALTER TABLE teammate drop foreign key teammate_ibfk_1;
 # 帖子表
 create table post
 (
-    post_id                int primary key auto_increment,
+    post_id                int auto_increment,
     initiator_id           int      not null,
     reverse_id             int comment '如果为null，则球场地点为其他',
     post_time              datetime not null comment '发帖时间',
     begin_time             datetime not null comment '开场时间',
     end_time               datetime not null comment '终场时间',
-    post_img               text              default 'http://qianlon.cn/upload/2021/11/image-c571dd25ab744ff0a954fae2cfe5b61a.png',
+    post_img               VARCHAR(2000)     default 'http://qianlon.cn/upload/2021/11/image-c571dd25ab744ff0a954fae2cfe5b61a.png',
     ball_id                int, # 如果为空则说明是其他球类
     bat_need_number        int check ( bat_need_number >= 0 ),
     ball_need_number       int check ( ball_need_number >= 0 ),
@@ -148,7 +164,7 @@ create table post
     initiator_note         text comment '偏好，如果地点其他，请发起人填写具体地点',
     initiator_note_details text comment '补充描述',
     state                  int      not null default 0 comment '待开：0，已开可加入：1，已开不可加入：2，结束：3',
-    foreign key (post_id) references post (post_id),
+#     foreign key (post_id) references post (post_id),
     foreign key (initiator_id) references user (user_id),
     foreign key (reverse_id) references courtreserve (reserve_id),
     foreign key (ball_id) references ballrule (ball_id),
@@ -168,9 +184,9 @@ create table ballrule
 # 球场表
 create table court
 (
-    court_id  int primary key auto_increment,
-    location  text not null default '南操',
-    court_img text          default 'http://qianlon.cn/upload/2021/11/image-c571dd25ab744ff0a954fae2cfe5b61a.png',
+    court_id  int auto_increment,
+    location  text not null,
+    court_img VARCHAR(2000) default 'http://qianlon.cn/upload/2021/11/image-c571dd25ab744ff0a954fae2cfe5b61a.png',
     primary key (court_id)
 );
 
