@@ -6,7 +6,6 @@
 
 
     <select id="selectAll" resultType="com.jc.entity.pojo.Court">
-        select court_id,location,court_img from court
+        select * from court
     </select>
-
 </mapper>

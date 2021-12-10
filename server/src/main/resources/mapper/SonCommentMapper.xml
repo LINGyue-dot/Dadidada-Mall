@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.mapper.SonCommentMapper">
+
+    <select id="selectByDadCommentId" parameterType="Integer" resultType="com.jc.entity.pojo.Soncomment">
+        select *
+        from soncomment where dadcomment_id=#{dadcommentId}
+    </select>
+
+
+</mapper>

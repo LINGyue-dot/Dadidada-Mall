@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface JoinerMapper extends BaseMapper<Joiner> {
-    List<Joiner> list();
-    List<Joiner> listId(Integer joinerId);
+
+    Integer update(Integer joinerId,Integer postId);
+
 }

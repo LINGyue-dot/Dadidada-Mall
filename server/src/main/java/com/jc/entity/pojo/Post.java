@@ -34,4 +34,5 @@ public class Post {
     private String initiatorNote;
     private String initiatorNoteDetails;
     private Integer state;
+    private Boolean isDelete;
 }

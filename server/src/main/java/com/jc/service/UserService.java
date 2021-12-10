@@ -1,19 +1,19 @@
 package com.jc.service;
 
-import com.jc.entity.pojo.User;
+import com.jc.entity.vo.User;
 
-import java.util.List;
 import java.util.Map;
 
 public interface UserService {
-    User getInformation(Map<String ,String > map);
+    com.jc.entity.pojo.User getInformation(Map<String ,String > map);
 
-    List<User> findAll();
 
-    Integer add(User user);
+    Integer add(com.jc.entity.pojo.User user);
 
-    Integer update(User user);
-    User findname(String name);
-    Integer selectId(String name);
+    Integer update(com.jc.entity.pojo.User user);
+
+    User search(Integer userId);
+
+    Integer changeAvatar(Map<String,String> map) ;
 
 }

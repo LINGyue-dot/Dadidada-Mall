@@ -12,22 +12,25 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/joiner")
 public class JoinerController {
 
     @Autowired
     private JoinerService joinerService;
 
-    @GetMapping("/findall")
-    public Result findAll(){
-        List<Joiner> data = joinerService.findAll();
-        return Result.success(data);
+
+    @PostMapping("/apply")
+    public Result addParticipant(@RequestBody Joiner joiner){
+        Integer state = joinerService.addApplicant(joiner);
+
+        return Result.success(state);
     }
 
-    @PostMapping("/findid")
-    public Result findId(@RequestBody Map<String,String> map){
-        List<Joiner> data = joinerService.findById(map);
-
-        return Result.success(data);
+    @PostMapping("/join/solve")
+    public Result solve(@RequestBody Map<String,String> map){
+        Integer state = joinerService.solve(map);
+        return Result.success(state);
     }
+
+
+
 }

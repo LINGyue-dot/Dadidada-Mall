@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jc.mapper.DadCommentMapper">
 
+    <select id="selectByPostId" parameterType="Integer" resultType="com.jc.entity.pojo.Dadcomment">
+        select *
+        from dadcomment where post_id=#{postId}
+    </select>
 
 
 </mapper>

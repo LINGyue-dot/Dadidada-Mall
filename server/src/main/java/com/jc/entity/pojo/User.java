@@ -25,7 +25,7 @@ public class User {
 
     @NotBlank(message = "用户名不能为空")
     private String userName;
-
+    private String userAvatar;
     private String userSex;
     private Integer userHeight;
     private Integer userWeight;
