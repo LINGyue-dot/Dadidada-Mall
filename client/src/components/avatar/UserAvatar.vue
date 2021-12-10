@@ -22,6 +22,8 @@ defineProps({
 	overflow: hidden;
 }
 .img-MIN {
+	width: 40px;
+	height: 40px;
 }
 .img-LARGE {
 	width: 70px;

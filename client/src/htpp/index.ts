@@ -52,5 +52,5 @@ export const hanleError = (res: BaseResponse) => {
     });
     return false;
   }
-  return res.data;
+  return res.data || true;
 };

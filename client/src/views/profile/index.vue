@@ -17,7 +17,9 @@
 			>
 				<IconTitle :icon-content="'&#xe62c;'" title="更新资料" />
 			</div>
-			<div class="flex-3-item list-item"></div>
+			<div class="flex-3-item list-item" @click="store.dispatch('logout')">
+				<IconTitle :icon-content="'&#xe66b;'" title="退出登录" />
+			</div>
 			<div class="flex-3-item list-item"></div>
 			<div class="flex-3-item list-item"></div>
 		</div>

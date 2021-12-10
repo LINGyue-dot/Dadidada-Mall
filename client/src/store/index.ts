@@ -2,7 +2,7 @@
  * @Author: qianlong github:https://github.com/LINGyue-dot
  * @Date: 2021-12-03 15:19:58
  * @LastEditors: qianlong github:https://github.com/LINGyue-dot
- * @LastEditTime: 2021-12-09 00:06:35
+ * @LastEditTime: 2021-12-09 21:10:04
  * @Description:
  */
 import { postLogin, alreadyUsername, postRegister } from "@/htpp/api";
@@ -76,6 +76,12 @@ export default createStore<StateProp>({
         message: "退出成功",
         position: "top",
       });
+      router.replace("/login");
+    },
+
+    updateProfile({ commit }, payload) {
+      loginStorage(payload);
+      commit("changeUserInfo", payload);
     },
   },
   modules: {},

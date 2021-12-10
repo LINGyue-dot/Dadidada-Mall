@@ -2,7 +2,7 @@
  * @Author: qianlong github:https://github.com/LINGyue-dot
  * @Date: 2021-12-03 15:19:58
  * @LastEditors: qianlong github:https://github.com/LINGyue-dot
- * @LastEditTime: 2021-12-08 23:15:55
+ * @LastEditTime: 2021-12-09 21:16:34
  * @Description:
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
@@ -25,11 +25,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "profile",
         component: () => import("@/views/profile/index.vue"),
       },
-      {
-        path: "add-post",
-        component: () => import("@/views/add-post/index.vue"),
-      },
     ],
+  },
+  {
+    path: "/add-post",
+    component: () => import("@/views/add-post/index.vue"),
   },
   {
     path: "/demo",
