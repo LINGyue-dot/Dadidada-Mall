@@ -5,10 +5,7 @@
 <mapper namespace="com.jc.mapper.JoinerMapper">
 
 
-    <select id="list" resultType="com.jc.entity.pojo.Joiner">
-        select * from joiner
-    </select>
-    <select id="listId" resultType="com.jc.entity.pojo.Joiner">
-        select * from joiner where joiner_id = #{joinerId}
-    </select>
+    <update id="update" >
+        update joiner set state=1 where joiner_id=#{joinerId} and post_id=#{postId}
+    </update>
 </mapper>

@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TeamMate {
 
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.INPUT)
     @MppMultiId
     private Integer readyparticipantId;
 
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.INPUT)
     @MppMultiId
     private Integer postId;
 

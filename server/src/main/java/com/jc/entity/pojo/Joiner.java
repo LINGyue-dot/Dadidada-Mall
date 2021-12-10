@@ -13,16 +13,17 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Joiner {
-    private Integer state;
-    private Integer postId;
 
-    private Timestamp beginTime;
-    private Timestamp endTime;
-
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.INPUT)
     @MppMultiId
     private Integer joinerId;
+
     @MppMultiId
+    private Integer postId;
+
+    private Integer state;
+    private Timestamp beginTime;
+    private Timestamp endTime;
     private Integer batOffer;
     private Integer ballOffer;
     private String position;

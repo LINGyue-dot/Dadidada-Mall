@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface JoinerService {
-    List<Joiner> findAll();
-    List<Joiner> findById(Map<String,String> map);
+
+    Integer addApplicant(Joiner joiner);
+
+    Integer solve(Map<String,String> map);
+
 }

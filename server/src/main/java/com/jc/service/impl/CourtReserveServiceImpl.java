@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,9 +21,9 @@ public class CourtReserveServiceImpl implements CourtReserveService {
     public Integer add(Map<String,String> map) {
         Courtreserve courtReserve =  new Courtreserve();
         Integer courtId = Integer.parseInt(map.get("courtId"));
-        Timestamp beginTime = Timestamp.valueOf(map.get("beginTime"));
-        Timestamp endTime = Timestamp.valueOf(map.get("endTime"));
-        Timestamp lastTime = Timestamp.valueOf(map.get("lastTime"));
+        Timestamp beginTime = new Timestamp(Long.parseLong(map.get("beginTime")));
+        Timestamp endTime = new Timestamp(Long.parseLong(map.get("endTime")));
+        Timestamp lastTime = new Timestamp(Long.parseLong(map.get("lastTime")));
 
         List<Courtreserve> courtreserves = courtReserveMapper.selectByCourtId(courtId);
         for (Courtreserve courtreserve:courtreserves) {
@@ -35,5 +36,16 @@ public class CourtReserveServiceImpl implements CourtReserveService {
         courtReserve.setLastTime(lastTime);
 
         return courtReserveMapper.insert(courtReserve);
+    }
+
+    @Override
+    public List<Courtreserve> getReserve(Integer userId) {
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("user_id",userId);
+
+        List<Courtreserve> courtreserves = courtReserveMapper.selectByMap(map);
+
+        return courtreserves;
     }
 }
