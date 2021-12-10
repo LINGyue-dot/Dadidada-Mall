@@ -2,9 +2,10 @@
  * @Author: qianlong github:https://github.com/LINGyue-dot
  * @Date: 2021-12-03 15:19:58
  * @LastEditors: qianlong github:https://github.com/LINGyue-dot
- * @LastEditTime: 2021-12-09 21:16:34
+ * @LastEditTime: 2021-12-10 14:35:39
  * @Description:
  */
+import store from "@/store";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
@@ -39,6 +40,18 @@ const routes: Array<RouteRecordRaw> = [
     path: "/update-profile",
     component: () => import("@/views/profile/UpdateProfile.vue"),
   },
+  {
+    path: "/post/:id",
+    component: () => import("@/views/post/index.vue"),
+  },
+  {
+    path: "/join-post/:id",
+    component: () => import("@/views/join-post/index.vue"),
+  },
+  {
+    path: "/applicant",
+    component: () => import("@/views/applicant/index.vue"),
+  },
 ];
 
 const router = createRouter({
@@ -47,7 +60,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  next();
+  if (store.state.login) {
+    next();
+  } else {
+    next("/login");
+  }
 });
 
 export default router;

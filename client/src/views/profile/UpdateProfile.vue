@@ -15,7 +15,6 @@
 					placeholder="用户名"
 					:rules="[{ required: true, message: '请填写用户名' }]"
 				/>
-
 				<van-field
 					name="userIdentity"
 					label="性别"
@@ -129,7 +128,7 @@ const updateProfile = async (values: any) => {
 		Toast.success("更新成功");
 		store.dispatch("updateProfile", userInfo);
 	}
-	router.back();
+	router.push("/home");
 };
 </script>
 <style scoped>

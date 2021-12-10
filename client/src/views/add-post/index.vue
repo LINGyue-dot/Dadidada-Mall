@@ -90,7 +90,11 @@
 
 			<van-field label="上传图片" :style="{ height: '120px!important' }">
 				<template #input>
-					<van-uploader v-model="imgList" :after-read="afterRead">
+					<van-uploader
+						v-model="imgList"
+						:after-read="afterRead"
+						:max-count="1"
+					>
 					</van-uploader>
 				</template>
 			</van-field>
@@ -199,11 +203,7 @@ onMounted(() => {
 	getBall();
 });
 
-const imgList = ref([
-	{
-		url: "http://qianlon.cn/upload/2021/08/image-286f5bb6e39f43e5a4002977f8214280.png",
-	},
-]);
+const imgList = ref([]);
 const afterRead = (file: any) => {
 	file.status = "uploading";
 	file.message = "上传中";
@@ -211,7 +211,10 @@ const afterRead = (file: any) => {
 	const data = unref(file.file);
 	console.log(data);
 	UploadImg(data)
-		.then(res => console.log(res))
+		.then((res: any) => {
+			file.url = res.data.url;
+			file.status = "success";
+		})
 		.then(err => console.log(err));
 };
 
