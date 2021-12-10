@@ -83,6 +83,7 @@ const login = () => {
 const register = async () => {
 	store.dispatch("register", {
 		userName: username.value,
+		userPassword: password.value,
 	});
 };
 </script>

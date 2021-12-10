@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "7418",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "f0292",
+      "unicode_decimal": 983698
+    },
+    {
       "icon_id": "55511",
       "name": "添加好友",
       "font_class": "68",
@@ -111,6 +118,13 @@
       "unicode_decimal": 58976
     },
     {
+      "icon_id": "1718321",
+      "name": "返回",
+      "font_class": "fanhui1",
+      "unicode": "f0343",
+      "unicode_decimal": 983875
+    },
+    {
       "icon_id": "1870114",
       "name": "评论",
       "font_class": "pinglun1",
@@ -139,9 +153,16 @@
       "unicode_decimal": 59538
     },
     {
+      "icon_id": "2076271",
+      "name": "退出",
+      "font_class": "tuichu",
+      "unicode": "e893",
+      "unicode_decimal": 59539
+    },
+    {
       "icon_id": "2076325",
       "name": "返回",
-      "font_class": "fanhui",
+      "font_class": "fanhui2",
       "unicode": "e8a4",
       "unicode_decimal": 59556
     },
@@ -221,6 +242,13 @@
       "font_class": "24gl-swapHorizontal",
       "unicode": "eb74",
       "unicode_decimal": 60276
+    },
+    {
+      "icon_id": "9454025",
+      "name": "退出",
+      "font_class": "tuichu1",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
     },
     {
       "icon_id": "10792685",

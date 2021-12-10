@@ -4,6 +4,7 @@
 <script lang="ts">
 export enum AvatarType {
 	MIN = "MIN",
+	PRIMARY = "PRIMARY",
 	LARGE = "LARGE",
 }
 </script>
@@ -22,9 +23,15 @@ defineProps({
 	overflow: hidden;
 }
 .img-MIN {
+	width: 100%;
+	height: 100%;
 }
 .img-LARGE {
 	width: 70px;
 	height: 70px;
+}
+.img-PRIMARY {
+	width: 40px;
+	height: 40px;
 }
 </style>
