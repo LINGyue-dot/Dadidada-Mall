@@ -21,8 +21,14 @@
 		<p class="pi-item">人员：{{ showPeopleNeed() }}</p>
 		<p class="pi-item content">{{ $props.item.initiatorNote }}</p>
 		<p class="pi-item" @click="showImg">
-			<van-image width="150" height="150" :src="$props.item.postImg" />
+			<van-image
+				width="150"
+				height="150"
+				fit="cover"
+				:src="$props.item.postImg"
+			/>
 		</p>
+		<StateTag :state="item.state" />
 	</div>
 </template>
 <script lang="ts" setup>
@@ -32,6 +38,7 @@ import { JsDateTimer } from "@/util/timer";
 import { ImagePreview } from "vant";
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
+import StateTag from "./StateTag.vue";
 const props = defineProps({
 	item: Object as any,
 });
@@ -90,8 +97,10 @@ onMounted(() => {
 </script>
 <style scoped>
 .pi-container {
+	position: relative;
 	margin-top: 20px;
 	border-bottom: 3px solid #eee;
+	overflow: hidden;
 }
 .pi-user {
 	margin-bottom: 10px;

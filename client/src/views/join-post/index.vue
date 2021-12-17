@@ -23,7 +23,7 @@
 				v-model="formData.position"
 				name="position"
 				label="场上位置"
-				type="number"
+				type="text"
 				placeholder="场上位置"
 			/>
 			<div style="margin: 16px">

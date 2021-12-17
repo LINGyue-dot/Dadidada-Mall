@@ -2,7 +2,7 @@
  * @Author: qianlong github:https://github.com/LINGyue-dot
  * @Date: 2021-12-03 15:19:58
  * @LastEditors: qianlong github:https://github.com/LINGyue-dot
- * @LastEditTime: 2021-12-10 14:35:39
+ * @LastEditTime: 2021-12-16 19:46:00
  * @Description:
  */
 import store from "@/store";
@@ -60,7 +60,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (store.state.login) {
+  if (store.state.login || to.path == "/login") {
     next();
   } else {
     next("/login");

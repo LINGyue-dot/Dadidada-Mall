@@ -12,6 +12,7 @@
 				style="display: inline-block"
 				round
 				width="10rem"
+				fit="cover"
 				height="10rem"
 				:src="store.state.userInfo?.userAvatar"
 			/>

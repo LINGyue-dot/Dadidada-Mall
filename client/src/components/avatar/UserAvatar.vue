@@ -18,7 +18,7 @@ defineProps({
 </script>
 <style scoped>
 .avatar {
-	object-fit: fill;
+	object-fit: cover;
 	border-radius: 50%;
 	overflow: hidden;
 }

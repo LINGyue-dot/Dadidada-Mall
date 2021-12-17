@@ -7,8 +7,8 @@
 			<van-empty image="search" description="暂无数据"
 		/></template>
 		<template v-else>
-			<div v-for="item in list">
-				<UserSimple :user-id="item.userId" :img-type="AvatarType.PRIMARY" />
+			<div v-for="item in list" class="item">
+				<UserSimple :user-id="item.joinerId" :img-type="AvatarType.PRIMARY" />
 			</div>
 		</template>
 	</van-action-sheet>
@@ -19,11 +19,13 @@ import { getPostParticipant } from "@/htpp/post";
 import { JsDateTimer } from "@/util/timer";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import UserSimple from "../../components/user-simple/index.vue";
 const showAction = ref(false);
 const route = useRoute();
 const list = ref<any[]>([]);
 onMounted(async () => {
 	list.value = await getPostParticipant(route.params.id);
+	console.log(list.value);
 });
 </script>
 <style scoped>
@@ -35,5 +37,8 @@ onMounted(async () => {
 	box-sizing: border-box;
 	background-color: #eee;
 	text-align: center;
+}
+.item {
+	height: 260px;
 }
 </style>
