@@ -17,7 +17,7 @@
 				/>
 				<van-field
 					name="userIdentity"
-					label="性别"
+					label="身份"
 					:rules="[{ required: true, message: '请填写身份' }]"
 				>
 					<template #input>
@@ -28,7 +28,7 @@
 						</van-radio-group>
 					</template>
 				</van-field>
-				<van-field name="userSex" label="身份">
+				<van-field name="userSex" label="性别">
 					<template #input>
 						<van-radio-group
 							v-model="info.userSex"
